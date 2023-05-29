@@ -24,7 +24,6 @@
             $('.responsive-sidebar-menu').removeClass('active');
         })
 
-
         $(document).on('click', ".color-boxed a", function() {
             $(".color-boxed a").removeClass("clr-active");
             $(this).addClass("clr-active");
