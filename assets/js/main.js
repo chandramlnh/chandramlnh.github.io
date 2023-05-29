@@ -1,5 +1,11 @@
-
-$(function(){
+/**
+ * Template Name: iPortfolio - v3.3.0
+ * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
+(function () {
+    "use strict";
 
     $(window).on('load', function () {
         $('.page-loader').delay('500').fadeOut(1000);
@@ -77,12 +83,6 @@ $(function(){
 
     }).scroll();
 
-
-
-
-
-
-
     if ($('.testimonial-slider').length) {
         var testimonial = $('.testimonial-slider').owlCarousel({
             items: 1,
@@ -118,98 +118,33 @@ $(function(){
         }
     }
 
-    // function remove_is_active() {
-    //     $(".menu .scroll-to").removeClass("active");
-    // }
-
-    // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-    // var container = document.querySelector("#smooth-content");
-
-    // var height;
-    // function setHeight() {
-    //     height = container.clientHeight;
-
-
-    //     document.body.style.height = height + "px";
-    // }
-    // ScrollTrigger.addEventListener("refreshInit", setHeight);
-
-    // gsap.to(container, {
-    //     y: () => -(height - document.documentElement.clientHeight),
-    //     ease: "none",
-    //     scrollTrigger: {
-    //         trigger: container,
-    //         start: "top top",
-    //         end: "bottom bottom",
-    //         scrub: 1,
-    //         invalidateOnRefresh: true,
-    //     }
-    // });
-
     window.addEventListener('scroll', {
         scroll_animations,
     });
 
+    const select = (el, all = false) => {
+        el = el.trim()
+        if (all) {
+            return [...document.querySelectorAll(el)]
+        } else {
+            return document.querySelector(el)
+        }
+    }
 
-    // Array.prototype.slice.call(document.querySelectorAll(".page-section")).forEach(function (e, t) {
-    //     ScrollTrigger.create({
-    //         trigger: e,
-    //         id: t + 1,
-    //         start: "top center",
-    //         end: function () {
-    //             return "+=".concat(e.clientHeight - 30);
-    //         },
-    //         toggleActions: "play reverse none reverse",
-    //         toggleClass: { targets: e, className: "active" },
-    //         onToggle: function () {
-    //             $(".menu .scroll-to").removeClass("active"), "" != e.id && $('.menu .scroll-to[href*="#' + e.id + '"]').addClass("active");
-    //         },
-    //     });
-    // });
+    const typed = select('.typed')
+    if (typed) {
+        let typed_strings = typed.getAttribute('data-typed-items')
+        typed_strings = typed_strings.split(',')
+        new Typed('.typed', {
+            strings: typed_strings,
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 2000
+        });
+    }
 
-    // document.querySelectorAll('.scroll-to').forEach((e) => {
-    //     const target = e.getAttribute('href');
-    //     const targetEl = document.querySelector(target);
-    //     // const targetRect = targetEl.getBoundingClientRect();
-
-
-    //     var offset = gsap.getProperty("#smooth-content", "y");
-    //     var position = jQuery(target).get(0).getBoundingClientRect().top - offset;
-    
-
-    //     e.addEventListener('click', (e) => {
-    //         e.preventDefault();
-
-    //         gsap.to(window, {
-    //             scrollTo: position,
-    //             ease: "power4",
-    //             duration: 0.1,
-    //             onToggle: function () {
-    //                 console.log('toggle');
-    //                 remove_is_active();
-    //                 if (targetEl.id != "") $('.menu .scroll-to[href*="#' + targetEl.id + '"]').addClass("active");
-    //             },
-    //             onLeaveBack: function () {
-    //                 console.log('leave back');
-    //                 remove_is_active();
-    //                 if (targetEl.id != "") $('.menu .scroll-to[href*="#' + targetEl.id + '"]').addClass("active");
-    //             },
-    //             onLeave: function () {
-    //                 console.log('leave');
-    //                 remove_is_active();
-    //                 if (targetEl.id != "") $('.menu .scroll-to[href*="#' + targetEl.id + '"]').addClass("active");
-    //             },
-    //             overwrite: !0,
-    //         });
-    //     });
-
-        
-    
-    // });
-
-});
-
+})()
 
 
 function scroll_animations() {
