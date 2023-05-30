@@ -551,26 +551,23 @@
                             <h3 class="scroll-animation" data-animation="fade_from_bottom">chandramaulanah@gmail.com</h3>
                             <p id="required-msg">* Marked fields are required to fill.</p>
 
-                            <form class="contact-form scroll-animation" data-animation="fade_from_bottom" method="POST" action="https://wpriverthemes.com/HTML/drake/mailer.php">
-                                <div class="alert alert-success messenger-box-contact__msg" style="display: none" role="alert">
-                                    Your message was sent successfully.
-                                </div>
+                            <form class="contact-form scroll-animation" data-animation="fade_from_bottom">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="input-group">
-                                            <label for="full-name">Your Name<sup>*</sup></label>
-                                            <input type="text" name="full-name" id="full-name" placeholder="Your Name">
+                                            <label>Your Name<sup>*</sup></label>
+                                            <input type="text" id="txt_name" autocomplete="off" placeholder="Your Name">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="input-group">
-                                            <label for="message">Mesage <sup>*</sup></label>
-                                            <textarea name="message" id="message" placeholder="Wrire your message here ..."></textarea>
+                                            <label>Mesage <sup>*</sup></label>
+                                            <textarea id="txt_message" autocomplete="off" placeholder="Wrire your message here ..."></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="input-group submit-btn-wrap">
-                                            <button class="theme-btn" name="submit" type="submit" id="submit-form">send message</button>
+                                            <button class="theme-btn" type="submit" onclick="sendx()">send message</button>
                                         </div>
                                     </div>
                                 </div>
@@ -582,6 +579,21 @@
             </div>
         </div>
     </main>
+
+    <script>
+        function sendx() {
+            var txt_name = document.getElementById("txt_name").value;
+            var txt_message = document.getElementById("txt_message").value;
+
+            if (txt_name == "" || txt_message == "") {
+                alert("Harap Diisi dengan benar");
+            } else {
+                var smsContain = "Halo, Saya " + txt_name + ". " + txt_message;
+                window.location.href =
+                "https://api.whatsapp.com/send?phone=6289652624770&text=" + smsContain;
+            }
+        }
+    </script>
     
 
     <script src="assets/js/jquery.js"></script>
