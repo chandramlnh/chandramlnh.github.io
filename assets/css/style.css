@@ -66,6 +66,10 @@ ul {
     margin: 0;
     padding: 0;
 }
+ul.dot-style {
+    list-style: disc;
+    padding-left: 2rem;
+}
 .content-width {
     max-width: 770px;
     width: 100%;
